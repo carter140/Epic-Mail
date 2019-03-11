@@ -1,0 +1,74 @@
+  <html>
+<head>
+<title>compose Message</title> 
+<link rel="stylesheet" type="text/css" href="../css/compose.css">
+<link rel="stylesheet" type="text/css" href="../css/indexCss.css">
+<link rel="stylesheet" type="text/css" href="../css/cssLogin.css">
+</head>
+<body>
+
+
+  <div class="main">
+      <div class="logo">
+        <img src="../assets/img/mail.jpg">
+      </div>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="mailbox.html">Inbox</a></li>
+        <li class="active"><a href="compose.html">New Message</a></li>
+        <li><a href="sent.html">SentMessages</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </div>
+   
+
+
+
+
+
+
+
+
+  <!-- /.col -->
+        <div class="col-md-9">
+          <div class="box">
+            
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="form-group">
+                <input class="form-control" placeholder="To:">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Subject:">
+              </div>
+              <div class="form-group">
+                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                      
+                    </textarea>
+              </div>
+              <div class="form-group">
+                <div class="btn btn-default btn-file">
+                  <i class="fa fa-paperclip"></i> Attachment
+                  <input type="file" name="attachment">
+                </div>
+                <p class="help-block">Max. 32MB</p>
+              </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box-footer">
+              <div class="pull-right"><br/>
+                <table><th><td>
+                <button type="button" class="btn"><i class=""></i> <font color="black">Draft</font></button></td><td>
+                <button type="submit" class="btn"><i class=""></i><font color="black"> Send</font></button></td><td>
+              </div>
+              <button type="reset" class="btn"><i class=""></i><font color="black"> Discard</font></button></td></th>
+            </table>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
