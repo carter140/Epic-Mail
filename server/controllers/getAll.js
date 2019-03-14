@@ -1,5 +1,5 @@
-const messages = [];
 
+const messages = [];
 const getAll= (req, res) =>{
     res.status(200).send({
         status:200,
