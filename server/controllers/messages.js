@@ -3,6 +3,7 @@ import moment from 'moment';
 import messages from '../models/messages';
 
 
+
 const newMessage=(req, res) => {
 
     //input Valiidation
@@ -27,5 +28,24 @@ const newMessage=(req, res) => {
 
 
     }
+  
 
-export default newMessage;
+const getAll= (req, res) =>{
+    res.status(200).send({
+        status:200,
+        data:{messages}
+    })
+}
+
+
+const getOneMessage= (req, res) =>{
+    const message = messages.find(c => c.id === parseInt(req.params.id));
+    if(!message) return res.send({
+        status:404,
+        message: "the message with the given id is not available"
+    });// object not found
+    res.send(message);
+}
+
+
+export default [getOneMessage, getAll, newMessage];

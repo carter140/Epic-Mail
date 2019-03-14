@@ -1,7 +1,7 @@
 import express from 'express';
 import newMessage from '../controllers/messages';
-import getOneMessage from '../controllers/getOneMessage';
-import getAll from '../controllers/getAll';
+import getOneMessage from '../controllers/messages';
+import getAll from '../controllers/messages';
 
 const router=express.Router();
 

@@ -3,6 +3,10 @@ import chaiHttp from 'chai-http';
 import app from '../server';
 import messages from '../controllers/messages';
 import moment from 'moment';
+import valid from '../helpers/validation';
+import createAccount from '../controllers/users';
+import login from '../controllers/login';
+
 
 
 chai.should();
@@ -14,7 +18,7 @@ const expect = chai.expect;
 describe("POST /newMessage", () => {
   it("Should create a new message", (done) => {
     const newMessage = {
-      
+        
         createdOn: moment(Date.now()),
         subject: 'hello',
         msg: 'muraho dore ibyiza biraje',
@@ -24,15 +28,13 @@ describe("POST /newMessage", () => {
         status: 'unread'
     };
     chai
-      .request(app)
-      .post("/api/messages")
-      .send(newMessage)
-      .end((req, res) => {
-        expect(res.body).to.have.property("data");
-        expect(res.body).to.be.an("object");
-        expect(res.body).to.have.property("status").equal(200);
+    .request(app)
+    .get("/api/messages")
+    .end((err, res) => {
+      expect(res.body).to.be.an("object");
+      done();
         
-        done();
+          
       });
   });
 
@@ -79,4 +81,72 @@ describe("GET /messages/<message-id>", () => {
 
 
 });
+
+
+
+describe('POST/ createAccount', () => {
+  it("should create a new User and status code of 200", (done) => {
+   
+    const createAccount = {
+      firstName: "leon",
+      lastName:"og",
+      email: "og@carter.com",
+      password: "cartermatic",
+      confirmPassword: "cartermatic"
+  }
+    chai 
+        
+          .request(app)
+          .get("/api/auth/signup")
+          .end((err, res) => {
+            expect(res.body).to.be.an("object");
+            done();  
+
+            });
+});
+});
+
+  
+
+
+
+
+describe('POST / login', () => {
+  it("once the user not found, it should show an error message with status code of 404", (done) => {
+      const login = {
+          "email" : "go@carter.com"
+      };
+      chai.request(app)
+          .post("/api/auth/login")
+          .send(login)
+          .end((err, res) => {
+          res.body.should.have.property('status').eql(400);
+              done();
+          });
+
+  });
+
+  it("should the user access his data", (done) => {
+      chai
+          .request(app)
+          .post("/api/auth/login")
+          .end((err, res) => {
+              expect(res.body).to.be.an("object");
+              expect(res.status).to.equal(200);
+              expect(res.body).to.have.property("status");
+              
+              done();
+
+              
+
+
+
+          });
+  });
+});
+
+
+
+
+
 
